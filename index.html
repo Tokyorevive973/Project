@@ -1,14 +1,108 @@
 <!DOCTYPE html>
 <html lang="hu">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Statika</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Modern Statisztikai Dashboard</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
+  <!-- Saját CSS -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
-<h1>xs</h1>
+  <!-- Háttér -->
+  <div class="bg-wrap">
+    <div class="gradient"></div>
+    <div class="blob"></div>
+  </div>
 
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">ST</div>
+        <div>
+          <h1>Statisztikai Dashboard</h1>
+          <p class="lead">Modern színes adatok</p>
+        </div>
+      </div>
+    </header>
+
+    <div class="grid">
+      <!-- Táblázat -->
+      <div class="card">
+        <h2>Adatok táblázata</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Név</th>
+                <th>Érték</th>
+                <th>Dátum</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Elem 1</td>
+                <td>120</td>
+                <td>2025-09-18</td>
+              </tr>
+              <tr>
+                <td>Elem 2</td>
+                <td>95</td>
+                <td>2025-09-18</td>
+              </tr>
+              <tr>
+                <td>Elem 3</td>
+                <td>210</td>
+                <td>2025-09-18</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Diagram -->
+      <div class="card">
+        <h2>Grafikon</h2>
+        <canvas id="myChart" height="200"></canvas>
+      </div>
+    </div>
+
+    <footer>
+      &copy; 2025 - Modern Statisztikai Weboldal
+    </footer>
+  </div>
+
+  <script>
+    const ctx = document.getElementById('myChart');
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['Jan', 'Feb', 'Már', 'Ápr', 'Máj', 'Jún'],
+        datasets: [{
+          label: 'Adatok',
+          data: [120, 95, 210, 180, 250, 300],
+          borderColor: '#7b61ff',
+          backgroundColor: 'rgba(123,97,255,0.2)',
+          fill: true,
+          tension: 0.4
+        }]
+      },
+      options: {
+        plugins: { legend: { labels: { color: '#fff' } } },
+        scales: {
+          x: { ticks: { color: '#fff' }, grid: { color: 'rgba(255,255,255,0.1)' } },
+          y: { ticks: { color: '#fff' }, grid: { color: 'rgba(255,255,255,0.1)' } }
+        }
+      }
+    });
+  </script>
 </body>
 </html>
